@@ -18,7 +18,7 @@ class SongsController < ApplicationController
     @song.artist = song_artist
     @song.genres << Genre.find_by_slug(params[:genre_name])
     flash[:message] = "Successfully created song."
-    
+    binding.pry
     redirect "/songs/#{@song.slug}"
   end
   
