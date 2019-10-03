@@ -4,7 +4,6 @@ begin
   fi_check_migration
 
   use Rack::MethodOverride
-  use Rack::Flash
   use ArtistsController
   use GenresController
   use SongsController

@@ -1,6 +1,4 @@
 class SongsController < ApplicationController
-  enable :sessions
-    
   get '/songs' do
     @songs = Song.all
     erb :'/songs/index'
@@ -20,6 +18,7 @@ class SongsController < ApplicationController
     @song.artist = song_artist
     @song.genres << Genre.find_by_slug(params[:genre_name])
     flash[:message] = "Successfully created song."
+    
     redirect "/songs/#{@song.slug}"
   end
   
