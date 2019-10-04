@@ -1,7 +1,9 @@
 module Slugifiable
   module ClassMethods
     def find_by_slug(slug)
-      all.each{|inst| return inst if inst.slug == slug}
+      found = ""
+      all.each{|inst| found =  inst if inst.slug == slug}
+      found
     end
   end
   

@@ -4,8 +4,8 @@
   <input id="hidden" type="hidden" name="_method" value="patch">
 
   Genre:
-  <%@song.genres.each do |genre|%>
-    <br><input type="checkbox" id="<%=genre.name%>" name="genre_name" value="<%=genre.name%>"><%=genre.name%></input>
+  <%@genres.each do |genre|%>
+    <br><input type="checkbox" id="<%=genre.name%>" name="genre_name" value="<%=genre.name%>" <%= 'checked' if @song.genres.include?(genre) %>><%=genre.name%></input>
   <%end%>
   
   <br>Artist:
