@@ -40,4 +40,21 @@ class SongsController < ApplicationController
     @song = Song.find_by_slug(params[:slug])
     erb :'/songs/edit'
   end
+  
+  patch '/songs/:slug/edit' do
+    song_artist = Artist.find_by_slug(params[:artist_name])
+    
+    if song_artist.empty?
+      song_artist = Artist.create(name: params[:artist_name])
+      @song.artist = song_artist
+    else
+      @song.artist = song_artist.first
+    end
+    
+    @song.genres << Genre.find_by_slug(params[:genre_name])
+    @song.save
+    flash[:message] = "Successfully updated song."
+    
+    redirect "/songs/#{@song.slug}"
+  end
 end
